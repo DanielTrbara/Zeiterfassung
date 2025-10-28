@@ -7,9 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Areas\Login\Controllers\" />
       <Folder Include="Areas\Login\Models\" />
-      <Folder Include="Areas\Login\Views\" />
     </ItemGroup>
 
 </Project>
