@@ -1,0 +1,44 @@
+#############################
+# Build & Runtime Artefakte #
+#############################
+bin/
+obj/
+publish/
+*.exe
+*.dll
+*.pdb
+*.cache
+*.log
+
+#######################
+# IDE / Editor Files  #
+#######################
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.iml
+
+#########################
+# OS-spezifische Dateien #
+#########################
+.DS_Store
+Thumbs.db
+
+##########################
+# Rider- & Temp-Ordner   #
+##########################
+.idea/
+*.iml
+*.tmp
+*.temp
+*.bak
+
+###########################
+# Paketverwaltung (NuGet) #
+###########################
+packages/
+project.lock.json
+project.fragment.lock.json
