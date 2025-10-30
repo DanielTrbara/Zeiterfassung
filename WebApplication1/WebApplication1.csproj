@@ -9,6 +9,7 @@
     <ItemGroup>
       <Folder Include="App_Data\" />
       <Folder Include="Areas\Login\Models\" />
+      <Folder Include="Areas\Zeiterfassung\Models\" />
     </ItemGroup>
 
     <ItemGroup>
