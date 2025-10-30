@@ -8,8 +8,6 @@
 
     <ItemGroup>
       <Folder Include="App_Data\" />
-      <Folder Include="Areas\Login\Models\" />
-      <Folder Include="Areas\Login\Views\Login\" />
     </ItemGroup>
 
     <ItemGroup>

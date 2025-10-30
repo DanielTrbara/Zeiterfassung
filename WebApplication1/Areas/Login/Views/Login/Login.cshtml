@@ -1,0 +1,43 @@
+@model ViewModelLogin
+@{
+    ViewData["Title"] = "Login";
+    var returnUrl = Context.Request.Query["returnUrl"].ToString();
+}
+
+<link href="~/css/login.css" rel="stylesheet" />
+
+<div class="login-container">
+    <div class="left-side">
+        <h2>Small Tech<br/><span class="offset">&amp; Company</span></h2>
+        <div class="description-title">
+            <p class="plus">+</p>
+            <h2>Automation.<br/>Precision.<br/>Progress.</h2>
+            <p class="description-desc">From concept to production — we build the machines that move industries forward.</p>
+        </div>
+    </div>
+
+    <div class="form-container">
+        <div class="right-side">
+            <h2>Welcome back!</h2>
+            <p class="subtitle">Sign in to continue.</p>
+
+            <form asp-action="Login" asp-route-returnUrl="@returnUrl" method="post">
+                @Html.AntiForgeryToken()
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <input asp-for="UserName" placeholder="Username" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+
+                <input asp-for="Password" type="password" placeholder="Password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+
+                <button type="submit">Sign in</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
