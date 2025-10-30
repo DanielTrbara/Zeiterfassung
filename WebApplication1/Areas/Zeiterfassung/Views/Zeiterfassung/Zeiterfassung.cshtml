@@ -1,8 +1,145 @@
 @{
+    // Behält deinen ursprünglichen ViewData["Title"]
     ViewData["Title"] = "Zeiterfassung";
+    // Setzt ein Layout, das nur den Inhalt, aber KEINE Standard-Navbar/Footer rendert
+    // (Annahme: Das Layout übernimmt die Sidebar und den Dark Mode)
+    // Wenn die Sidebar Teil deines _Layout.cshtml ist, kannst du diese Zeile weglassen oder anpassen.
+    // Layout = "_CustomDashboardLayout";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Zeiterfasssung</h1>
-    <p>blyat</p>
+<div class="dashboard-container d-flex">
+    
+    <aside class="sidebar bg-dark text-white p-3">
+        <div class="sidebar-header mb-4">
+            <h3 class="text-white">Small Tech & Company</h3>
+            <p class="text-muted">TimeManager</p>
+        </div>
+        <nav class="nav flex-column">
+            <a class="nav-link text-white-50 active" href="#">Home ></a>
+            <a class="nav-link text-white-50" href="#">Roles ></a>
+            <a class="nav-link text-white-50" href="#">Vacation Time ></a>
+            <a class="nav-link text-white-50" href="#">Settings ></a>
+        </nav>
+    </aside>
+
+    <main class="main-content flex-grow-1 p-4 bg-dark-secondary">
+        
+        <header class="main-header d-flex justify-content-between align-items-center mb-4">
+            <div class="search-bar">
+                <input type="text" class="form-control" placeholder="🔍 Search">
+            </div>
+            <div class="user-info d-flex align-items-center">
+                <span class="welcome-text me-3 text-white-50">Welcome Back, **Admin_Username**</span>
+                <i class="fas fa-cog me-2 text-white"></i> <i class="fas fa-bell me-2 text-white"></i>  
+            </div>
+        </header>
+
+        <div class="status-tiles d-flex justify-content-between mb-4">
+            <div class="tile card p-3 bg-dark-tertiary text-white w-25 me-3">
+                <h5 class="text-muted">Today, (DD/MM/YYYY)</h5>
+            </div>
+            <div class="tile card p-3 bg-dark-tertiary text-white flex-fill me-3">
+                <p class="mb-1 text-muted">Active Employees</p>
+                <h4>**140**</h4>
+            </div>
+            <div class="tile card p-3 bg-dark-tertiary text-white flex-fill me-3">
+                <p class="mb-1 text-muted">Hours worked</p>
+                <h4>**3,279**</h4>
+            </div>
+            <div class="tile card p-3 bg-dark-tertiary text-white flex-fill me-3">
+                <p class="mb-1 text-muted">Meetings scheduled (This week)</p>
+                <h4>**4**</h4>
+            </div>
+            <div class="tile card p-3 bg-dark-tertiary text-white flex-fill">
+                <p class="mb-1 text-muted">Employees in vacation</p>
+                <h4>**12**</h4>
+            </div>
+        </div>
+
+        <div class="card p-3 mb-4 bg-dark-tertiary text-white">
+            <h5>Working Hours Overview</h5>
+            <div class="chart-placeholder">
+                 <p class="text-muted text-center"></p>
+            </div>
+        </div>
+
+        <div class="row">
+            
+            <div class="col-md-4">
+                <div class="card p-3 bg-dark-tertiary text-white h-100">
+                    <h5>Time tracking input</h5>
+                    <div class="mb-3">
+                        <label for="startTime" class="form-label text-muted">Start time</label>
+                        <input type="time" class="form-control bg-dark-input text-white border-secondary" id="startTime" placeholder="Start time">
+                    </div>
+                    <div class="mb-3">
+                        <label for="endTime" class="form-label text-muted">End time</label>
+                        <input type="time" class="form-control bg-dark-input text-white border-secondary" id="endTime" placeholder="End time">
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label text-muted">Description (optional)</label>
+                        <textarea class="form-control bg-dark-input text-white border-secondary" id="description" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block mt-auto bg-dark-submit border-0 text-white">Enter</button>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card p-3 bg-dark-tertiary text-white h-100">
+                    <h5>Today's working time</h5>
+                    <table class="table table-borderless text-white">
+                        <tbody>
+                            <tr>
+                                <td class="category-label text-success">Working Time</td>
+                                <td>8:00 - 13:00</td>
+                                <td class="text-end">**5 Hours**</td>
+                            </tr>
+                            <tr>
+                                <td class="category-label text-warning">Break Time</td>
+                                <td>13:00 - 14:00</td>
+                                <td class="text-end">**1 Hour**</td>
+                            </tr>
+                            <tr>
+                            <tr>
+                                <td class="category-label text-success">Working Time</td>
+                                <td>14:00 - 17:00</td>
+                                <td class="text-end">**3 Hours**</td>
+                            </tr>
+                            <tr>
+                                <td class="category-label text-info">Overtime</td>
+                                <td>17:00 - 18:30</td>
+                                <td class="text-end">**1.5 Hours**</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <hr class="bg-secondary">
+                    <p class="mt-auto">Total hours worked: **9.5 hours**</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card p-3 bg-dark-tertiary text-white h-100">
+                    <h5>Projects worked on</h5>
+                    <div class="project-item mb-2">
+                        <p class="mb-0">**(Product application)**</p>
+                        <small class="text-muted">(Description) - *[Time remaining]*</small>
+                    </div>
+                    <div class="project-item mb-2">
+                        <p class="mb-0">**(Product application)**</p>
+                        <small class="text-muted">(Description) - *[Time remaining]*</small>
+                    </div>
+                    <div class="project-item mb-2">
+                        <p class="mb-0">**(Product application)**</p>
+                        <small class="text-muted">(Description) - *[Time remaining]*</small>
+                    </div>
+                    <div class="project-item mb-2">
+                        <p class="mb-0">**(Description)**</p>
+                        <small class="text-muted">* (Description) - [Time remaining]*</small>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
 </div>
