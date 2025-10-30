@@ -37,13 +37,16 @@ namespace WebApplication1.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("Role")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.ToTable("LoginUsers");
+                    b.ToTable("LoginUsers", (string)null);
                 });
 #pragma warning restore 612, 618
         }
