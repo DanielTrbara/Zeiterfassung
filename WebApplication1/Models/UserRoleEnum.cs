@@ -1,9 +1,10 @@
-namespace WebApplication1.Models;
-
-public enum UserRoleEnum
+namespace WebApplication1.Models
 {
-    Admin = 1,
-    Hr = 2,
-    Supervisor = 3,
-    Worker = 4
+    public enum UserRoleEnum
+    {
+        Admin = 1,
+        Hr = 2,
+        Supervisor = 3,
+        Worker = 4
+    }
 }

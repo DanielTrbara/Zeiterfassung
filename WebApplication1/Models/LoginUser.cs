@@ -9,5 +9,5 @@ public class LoginUser
     public string PasswordHash { get; set; } = "";
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public bool IsActive { get; set; } = true;
-    public UserRoleEnum User { get; set; }
+    public UserRoleEnum Role { get; set; }
 }
