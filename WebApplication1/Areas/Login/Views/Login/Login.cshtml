@@ -4,28 +4,24 @@
 
 <link href="~/css/login.css" rel="stylesheet" />
 
-
 <div class="login-container">
     <div class="left-side">
-        <div class="branding">
-            <h2 class="branding branding-logo">Small Tech<br>&amp; Company</h2>
-            <div class="slogan">
-                <p class="plus">+</p>
-                <h3>Automation.<br>Precision.<br>Progress.</h3>
-                <p class="description">
-                    From concept to production — we build the machines<br>
-                    that move industries forward.
-                </p>
-            </div>
+        <h2>Small Tech<br/>
+            <span class="offset">&amp; Company</span>
+        </h2>
+        <div class=" description-title">
+            <p class="plus">+</p>
+            <h2>Automation. <br/> Precision. <br/> Progress.</h2>
+            <p class="description-desc">From concept to production — we build the machines that move industries forward.</p>
         </div>
     </div>
-
+    
+<div class="form-container">
     <div class="right-side">
-        <div class="form-container">
-            <h2>Welcome back!</h2>
-            <p class="subtitle">Sign in to continue</p>
+        <h2>Welcome back!</h2>
+        <p class="subtitle">Sign in to continue.</p>
             <form method="post" asp-action="Login">
-                <input type="text" name="username" placeholder="Username or Email address" required />
+                <input type="text" name="username" placeholder="Username" required />
                 <input type="password" name="password" placeholder="Password" required />
                 <button type="submit">Sign in</button>
             </form>
