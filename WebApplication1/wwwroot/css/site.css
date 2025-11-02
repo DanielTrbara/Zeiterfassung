@@ -1,31 +1,192 @@
-html {
-  font-size: 14px;
-}
+:root {
+    /* Custom Dark Theme Colors */
+    --color-bg-main: #121212; /* Overall background */
+    --color-bg-sidebar-start: #101F21; /* Sidebar gradient top */
+    --color-bg-sidebar-end: #000000; /* Sidebar gradient bottom */
+    --color-bg-card: #1E1E1E; /* Card/Tile background */
+    --color-text-primary: #FFFFFF;
+    --color-text-secondary: #AAAAAA;
+    --color-input-bg: #2B2B2B; /* Rounded black space for inputs */
+    --color-submit-bg: #000000; /* Enter button */
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    /* Category Colors (Today's working time) */
+    --color-working-time: #69F0AE; /* Light green */
+    --color-break-time: #FFEB3B; /* Yellow */
+    --color-overtime: #80D8FF; /* Light blue */
 }
 
 body {
-  margin-bottom: 60px;
+    font-family: 'Geist', 'Inter', sans-serif;
+    background-color: var(--color-bg-main);
+    color: var(--color-text-primary);
+    margin: 0;
+    padding: 0;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+/* --- SIDEBAR STYLING --- */
+.sidebar {
+    width: 250px;
+    padding: 20px;
+    /* Apply the gradient from 101F21 to 000000 */
+    background: linear-gradient(180deg, var(--color-bg-sidebar-start) 0%, var(--color-bg-sidebar-end) 100%);
+    flex-shrink: 0;
+    user-select: none;
+    position: relative; /* For log out positioning */
+}
+
+.sidebar-header h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+    font-weight: 600;
+}
+
+.sidebar-header p {
+    font-size: 0.9rem;
+    margin-top: -5px;
+    color: var(--color-text-secondary) !important;
+}
+
+.sidebar a.nav-link {
+    color: #AAAAAA !important;
+    padding: 10px 0;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+
+.sidebar a.nav-link:hover {
+    color: var(--color-text-primary) !important;
+}
+
+.logout-link {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: #C62828 !important; /* Red for log out */
+}
+
+/* --- MAIN CONTENT STYLING --- */
+.main-content {
+    background-color: var(--color-bg-main);
+    padding: 30px;
+    flex-grow: 1;
+}
+
+/* HEADER & SEARCH */
+.main-header {
+    padding-bottom: 20px;
+    margin-bottom: 30px !important;
+}
+
+.search-bar input {
+    background-color: var(--color-bg-card); /* Darker input background */
+    border: none;
+    color: var(--color-text-primary);
+    border-radius: 8px;
+    width: 300px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.user-info .fa-solid {
+    font-size: 1.25rem;
+    cursor: pointer;
+    color: var(--color-text-secondary) !important;
+}
+
+.user-avatar {
+    width: 30px;
+    height: 30px;
+    background-color: #333333; /* Avatar Circle Placeholder */
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+/* CARDS/TILES STYLING */
+.card {
+    background-color: var(--color-bg-card);
+    border: none;
+    border-radius: 10px;
+}
+
+.status-tiles .tile {
+    min-width: 150px;
+    padding: 15px !important;
+}
+
+.status-tiles h4 {
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.status-tiles p {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary) !important;
+}
+
+/* CHART/GRAPH PLACEHOLDER */
+.chart-placeholder {
+    height: 250px;
+    background-color: #FFFFFF; /* White rectangle as requested */
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+/* TIME INPUT STYLING (Rounded Black Space) */
+.bg-dark-input {
+    background-color: var(--color-input-bg) !important;
+    border: 1px solid #444444 !important;
+    color: var(--color-text-primary) !important;
+    border-radius: 8px;
+}
+
+/* ENTER BUTTON STYLING */
+.bg-dark-submit {
+    background-color: var(--color-submit-bg) !important;
+    color: var(--color-text-primary) !important;
+    border: none !important;
+    font-weight: 500;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* TODAY'S WORKING TIME TABLE */
+.table {
+    color: var(--color-text-primary);
+}
+
+.table-borderless td {
+    border: none;
+    padding: 8px 0;
+}
+
+.category-label {
+    font-weight: 600;
+}
+
+.working-time-color {
+    color: var(--color-working-time) !important;
+}
+
+.break-time-color {
+    color: var(--color-break-time) !important;
+}
+
+.overtime-color {
+    color: var(--color-overtime) !important;
+}
+
+.table hr {
+    background-color: #333;
+    opacity: 1;
+}
+
+.project-item small {
+    color: var(--color-text-secondary) !important;
+    display: block;
+    margin-top: -5px;
 }
