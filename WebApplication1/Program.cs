@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Data;
+using WebApplication1.Models; 
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,11 +46,25 @@ try
     using var scope = app.Services.CreateScope();
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     db.Database.Migrate();
+    
+    if (!db.Set<LoginUser>().Any())
+    {
+        db.Add(new LoginUser
+        {
+            UserName = "test",
+            PasswordHash = "1234"   // nur zum Testen, später hashen!
+        });
+        db.SaveChanges();
+        Console.WriteLine("Test-User angelegt: test / 1234");
+    }
+    
 }
 catch (Exception ex)
 {
     Console.WriteLine("DB init/migrate failed: " + ex);
     throw; // damit du den echten Stacktrace siehst
 }
+
+
 
 app.Run();
