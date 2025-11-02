@@ -8,7 +8,6 @@
 
     <ItemGroup>
       <Folder Include="App_Data\" />
-      <Folder Include="Areas\Zeiterfassung\Views\Zeiterfassung\" />
     </ItemGroup>
 
     <ItemGroup>
