@@ -38,27 +38,6 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// ---- Simple DB seed (nur Dev) ----
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    await db.Database.EnsureCreatedAsync();
-
-    if (!await db.Set<LoginUser>().AnyAsync())
-    {
-        var admin = new LoginUser
-        {
-            UserName = "admin",
-            Email = "admin@example.com",
-            Role = UserRoleEnum.Admin,
-            IsActive = true,
-            PasswordHash = BCrypt.Net.BCrypt.HashPassword("admin123") 
-        };
-        await db.AddAsync(admin);
-        await db.SaveChangesAsync();
-    }
-}
-
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");

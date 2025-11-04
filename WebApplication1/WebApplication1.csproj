@@ -24,4 +24,9 @@
       </PackageReference>
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="testbcrypt\obj\project.assets.json" />
+      <_ContentIncludedByDefault Remove="testbcrypt\obj\testbcrypt.csproj.nuget.dgspec.json" />
+    </ItemGroup>
+
 </Project>
