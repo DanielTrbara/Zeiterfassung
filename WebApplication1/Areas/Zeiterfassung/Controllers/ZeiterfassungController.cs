@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using WebApplication1.Areas.Zeiterfassung.Models; 
 
 namespace WebApplication1.Areas.Zeiterfassung.Controllers
 {
@@ -8,7 +9,8 @@ namespace WebApplication1.Areas.Zeiterfassung.Controllers
         [HttpGet]
         public IActionResult Zeiterfassung()
         {
-            return View("Zeiterfassung");
+            var viewModel = new ZeiterfassungViewModel();
+            return View("Zeiterfassung", viewModel); 
         }
     }
 }
