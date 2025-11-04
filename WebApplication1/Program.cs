@@ -52,7 +52,7 @@ using (var scope = app.Services.CreateScope())
             Email = "admin@example.com",
             Role = UserRoleEnum.Admin,
             IsActive = true,
-            PasswordHash = BCrypt.Net.BCrypt.HashPassword("admin123") // TODO: sofort ändern
+            PasswordHash = BCrypt.Net.BCrypt.HashPassword("admin123") 
         };
         await db.AddAsync(admin);
         await db.SaveChangesAsync();
