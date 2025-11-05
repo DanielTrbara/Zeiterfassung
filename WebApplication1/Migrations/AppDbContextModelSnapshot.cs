@@ -17,6 +17,40 @@ namespace WebApplication1.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.10");
 
+            modelBuilder.Entity("WebApplication1.Data.Models.Krankschreibung", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Bis")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("ErfasstAm")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Kommentar")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("MitAttest")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("MitarbeiterEmail")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MitarbeiterName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Von")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Krankschreibung");
+                });
+
             modelBuilder.Entity("WebApplication1.Models.LoginUser", b =>
                 {
                     b.Property<int>("Id")

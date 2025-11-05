@@ -1,0 +1,45 @@
+
+@* Das ist nur eine Testview von chat ich erstelle selber noch eine *@
+
+@model WebApplication1.Areas.Krankschreibung.Models.KrankschreibungViewModel
+
+<h2>Krankschreibung einreichen</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="MitarbeiterName" class="form-label"></label>
+        <input asp-for="MitarbeiterName" class="form-control" />
+        <span asp-validation-for="MitarbeiterName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MitarbeiterEmail" class="form-label"></label>
+        <input asp-for="MitarbeiterEmail" class="form-control" />
+        <span asp-validation-for="MitarbeiterEmail" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Von" class="form-label"></label>
+        <input asp-for="Von" class="form-control" />
+        <span asp-validation-for="Von" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Bis" class="form-label"></label>
+        <input asp-for="Bis" class="form-control" />
+        <span asp-validation-for="Bis" class="text-danger"></span>
+    </div>
+
+    <div class="form-check">
+        <input asp-for="MitAttest" class="form-check-input" />
+        <label asp-for="MitAttest" class="form-check-label"></label>
+    </div>
+
+    <div class="form-group mt-3">
+        <label asp-for="Kommentar" class="form-label"></label>
+        <textarea asp-for="Kommentar" class="form-control"></textarea>
+        <span asp-validation-for="Kommentar" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Absenden</button>
+</form>

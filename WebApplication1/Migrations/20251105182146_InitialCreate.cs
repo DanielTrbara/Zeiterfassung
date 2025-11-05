@@ -14,6 +14,25 @@ namespace WebApplication1.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Krankschreibung",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    MitarbeiterName = table.Column<string>(type: "TEXT", nullable: false),
+                    MitarbeiterEmail = table.Column<string>(type: "TEXT", nullable: false),
+                    Von = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Bis = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    MitAttest = table.Column<bool>(type: "INTEGER", nullable: false),
+                    Kommentar = table.Column<string>(type: "TEXT", nullable: true),
+                    ErfasstAm = table.Column<DateTime>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Krankschreibung", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "LoginUsers",
                 columns: table => new
                 {
@@ -44,6 +63,9 @@ namespace WebApplication1.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Krankschreibung");
+
             migrationBuilder.DropTable(
                 name: "LoginUsers");
         }
