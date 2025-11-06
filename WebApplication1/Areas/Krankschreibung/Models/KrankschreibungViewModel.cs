@@ -42,7 +42,7 @@ public class KrankschreibungViewModel
     [DataType(DataType.MultilineText)]
     public string? Kommentar { get; set; }
 
-    public void ConvertTo(Data.Models.KrankschreibungModel entity)
+    public void ConvertTo(KrankschreibungModel entity)
     {
         entity.MitarbeiterName = MitarbeiterName;
         entity.MitarbeiterEmail = MitarbeiterEmail;
