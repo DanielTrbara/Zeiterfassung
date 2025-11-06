@@ -49,3 +49,5 @@ project.fragment.lock.json
 App_Data/*.db
 App_Data/*.sqlite
 App_Data/*.sqlite3
+/App_Data/app.db-shm
+/App_Data/app.db-wal

@@ -3,9 +3,21 @@
 
 @model WebApplication1.Areas.Krankschreibung.Models.KrankschreibungViewModel
 
+@{
+    var successMessage = TempData["SuccessMessage"] as string;
+}
+
 <h2>Krankschreibung einreichen</h2>
 
-<form asp-action="Create" method="post">
+@if (!string.IsNullOrEmpty(successMessage))
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @successMessage
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<form asp-action="Index" method="post">
     <div class="form-group">
         <label asp-for="MitarbeiterName" class="form-label"></label>
         <input asp-for="MitarbeiterName" class="form-control" />

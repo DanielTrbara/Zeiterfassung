@@ -1,6 +1,6 @@
 namespace WebApplication1.Data.Models;
 
-public class Krankschreibung
+public class KrankschreibungModel
 {
     public int Id { get; set; }
 
