@@ -1,16 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebApplication1.Areas.VacationRequest.Model;
-
+using WebApplication1.Data;
 namespace WebApplication1.Areas.VacationRequest.Controllers;
 
-public class UrlaubsantragController : Controller
+[Area("VacationRequest")]
+public class VacationRequestController : Controller
 {
-    private readonly ILogger<UrlaubsantragController> _logger;
+    private readonly ILogger<VacationRequestController> _logger;
         // private readonly IVacationService _vacationService; // Beispiel für einen Dienst
 
         // Konstruktor (für Dependency Injection)
-        public UrlaubsantragController(ILogger<UrlaubsantragController> logger /*, IVacationService vacationService */)
+        public VacationRequestController(ILogger<VacationRequestController> logger /*, IVacationService vacationService */)
         {
             _logger = logger;
             // _vacationService = vacationService;
@@ -22,9 +23,10 @@ public class UrlaubsantragController : Controller
         
         // Diese Methode reagiert auf GET-Anfragen an /Vacation/Request
         [HttpGet]
-        public IActionResult Login()
+        public IActionResult Index()
         {
-            return View(new UrlaubsantragViewModel());
+            var model = new UrlaubsantragViewModel();
+            return View(model);
         }
 
         // ===============================================
