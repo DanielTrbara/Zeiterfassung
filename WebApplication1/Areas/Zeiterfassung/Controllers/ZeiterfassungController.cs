@@ -15,7 +15,7 @@ namespace WebApplication1.Areas.Zeiterfassung.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Zeiterfassung()
         {
             var model = new ZeiterfassungViewModel();
             
@@ -30,7 +30,7 @@ namespace WebApplication1.Areas.Zeiterfassung.Controllers
             model.TodaysTotalHours = todaysEntries.Sum(e => e.Hours);
             
         
-            return View(model);
+            return View("Zeiterfassung", model);
         }
 
         [HttpPost]
@@ -72,7 +72,7 @@ namespace WebApplication1.Areas.Zeiterfassung.Controllers
                 _context.TimeEntries.Add(entry);
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Zeiterfassung));
             }
 
             // Wenn ModelState ungültig, lade Daten neu
@@ -84,7 +84,8 @@ namespace WebApplication1.Areas.Zeiterfassung.Controllers
             
             model.TodaysTotalHours = model.TodaysEntries.Sum(e => e.Hours);
 
-            return View("Index", model);
+            return View("Zeiterfassung", model);
         }
     }
+    
 }

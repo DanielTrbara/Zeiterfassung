@@ -1,5 +1,4 @@
 namespace WebApplication1.Areas.Zeiterfassung.Models;
-
 public class TimeEntry
 {
     public int Id { get; set; } 
