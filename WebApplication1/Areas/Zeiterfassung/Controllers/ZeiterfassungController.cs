@@ -29,12 +29,7 @@ namespace WebApplication1.Areas.Zeiterfassung.Controllers
             model.TodaysEntries = todaysEntries;
             model.TodaysTotalHours = todaysEntries.Sum(e => e.Hours);
             
-            // Dashboard-Statistiken (Beispiel-Daten, später aus DB)
-            model.ActiveEmployees = 140;
-            model.TotalHoursWorked = 3279;
-            model.ScheduledMeetings = 4;
-            model.EmployeesOnVacation = 12;
-
+        
             return View(model);
         }
 
