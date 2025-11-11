@@ -463,6 +463,33 @@ html, body {
     font-weight: 500;
 }
 
+/* --- Time Tracking Disclaimer --- */
+.time-tracking-major-disclaimer{
+    margin-top: 20px;
+    width: 100%;
+    height: 60px;
+    border: 2px solid #ffc300;
+    background-color: rgba(251, 216, 120, 0.47);
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    
+    gap: 20px;
+    
+}
+
+.time-tracking-disclaimer-text{
+    
+}
+
+.time-tracking-major-disclaimer img{
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+}
+
+
 
 /* --- Time Tracking Section --- */
 .time-tracking-section {
