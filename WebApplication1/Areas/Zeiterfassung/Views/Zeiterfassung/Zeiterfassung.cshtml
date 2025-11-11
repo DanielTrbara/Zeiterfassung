@@ -9,34 +9,33 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="~/css/dashboard.css" />
-    <script src="~/js/dashboard.js"></script>
     <title>STC - Dashboard</title>
 </head>
 <body>
-    <div class="sidebar">
-        <div class="sidebar-header">
-            <h2>Small Tech<br><span class="offset">&amp; Company</span></h2>
-            <p class="time-manager-text">TimeManager</p>
+<div class="sidebar">
+    <div class="sidebar-header">
+        <h2>Small Tech<br><span class="offset">&amp; Company</span></h2>
+        <p class="time-manager-text">TimeManager</p>
             
-            <div class="search">
-                <input type="text" placeholder="Search...">
-            </div>
-        </div>
-
-        <div class="sidebar-nav">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Roles</a></li>
-                <li><a href="#">Vacation Time</a></li>
-                <li><a href="#">Settings</a></li>
-            </ul>
-        </div>
-        <div class="logout">
-            <a class="logout-link nav-link" asp-area="" asp-controller="Account" asp-action="Logout">
-                <i class="fas fa-sign-out-alt me-2"></i> Log out
-            </a>
+        <div class="search">
+            <input type="text" placeholder="Search...">
         </div>
     </div>
+
+    <div class="sidebar-nav">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Roles</a></li>
+            <li><a href="#">Vacation Time</a></li>
+            <li><a href="#">Settings</a></li>
+        </ul>
+    </div>
+    <div class="logout">
+        <a class="logout-link nav-link" asp-area="" asp-controller="Account" asp-action="Logout">
+            <i class="fas fa-sign-out-alt me-2"></i> Log out
+        </a>
+    </div>
+</div>
 
 
 <div class="main-content">
@@ -105,32 +104,36 @@
         </div>
         
         <div class="time-tracking-section">
-            <form asp-action="AddEntry" method="post" class="time-input-card">
+            <div class="time-input-card">
                 <h3 class="section-title">Time tracking input</h3>
-
-                <div class="time-inputs-row">
-                    <div class="input-group">
-                        <label for="start-time">Start time</label>
-                        <input type="time" id="start-time" name="startTime" class="time-input" required />
+        
+                <form asp-area="Zeiterfassung" asp-controller="Zeiterfassung" asp-action="AddTimeEntry" method="post">
+                    <div class="time-inputs-row">
+                        <div class="input-group">
+                            <label asp-for="InputStartTime">Start time</label>
+                            <input asp-for="InputStartTime" type="time" class="time-input" />
+                            <span asp-validation-for="InputStartTime" class="text-danger"></span>
+                        </div>
+                
+                        <div class="input-group">
+                            <label asp-for="InputEndTime">End time</label>
+                            <input asp-for="InputEndTime" type="time" class="time-input" />
+                            <span asp-validation-for="InputEndTime" class="text-danger"></span>
+                        </div>
                     </div>
-
-                    <div class="input-group">
-                        <label for="end-time">End time</label>
-                        <input type="time" id="end-time" name="endTime" class="time-input" required />
+            
+                    <div class="input-group full-width">
+                        <label asp-for="InputDescription">Description (optional)</label>
+                        <textarea asp-for="InputDescription" class="description-input" placeholder="Enter 'break' for break time or 'overtime' for overtime..."></textarea>
                     </div>
-                </div>
-
-                <div class="input-group full-width">
-                    <label for="description">Description*</label>
-                    <textarea id="description" name="description" class="description-input" placeholder="Enter work description..."></textarea>
-                </div>
-
-                <button type="submit" class="enter-btn">Enter</button>
-            </form>
+            
+                    <button type="submit" class="enter-btn">Enter</button>
+                </form>
+            </div>
     
             <div class="today-working-card">
                 <h3 class="section-title">Today's working time</h3>
-
+        
                 <table class="time-table">
                     <thead>
                     <tr>
@@ -140,24 +143,47 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @*  @foreach (var entry in Model.Entries) *@
+                    @if (Model.TodaysEntries != null && Model.TodaysEntries.Any())
                     {
-                    <tr>
-                    @*<tr class="@entry.Category "> *@
-                       @* <td>@entry.CategoryText</td> 
-                        @*<td>@entry.StartTime - @entry.EndTime</td>*@
-                        @*<td>@entry.Hours.ToString("0.0") Hours</td>*@
-                    </tr>
+                        @foreach (var entry in Model.TodaysEntries)
+                        {
+                            <tr class="@GetCategoryClass(entry.Category)">
+                                <td>@entry.Category</td>
+                                <td>@entry.TimeSpan</td>
+                                <td>@entry.Hours.ToString("0.0") Hours</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="3" style="text-align: center; padding: 20px; color: #9ca3af;">
+                                No entries yet. Start tracking your time!
+                            </td>
+                        </tr>
                     }
                     </tbody>
                 </table>
+        
                 <div class="total-hours">
                     <span class="total-label">Total hours worked:</span>
-                   @* <span class="total-value">@Model.TotalHours.ToString("0.0") hours</span> *@
+                    <span class="total-value">@Model.TodaysTotalHours.ToString("0.0") hours</span>
                 </div>
-            </div>
-            
             </div>
         </div>
     </div>
+</div>
 </body>
+
+@functions {
+    private string GetCategoryClass(string category)
+    {
+        return category?.ToLower() switch
+        {
+            "working time" => "working-time",
+            "break time" => "break-time",
+            "overtime" => "overtime",
+            _ => "working-time"
+        };
+    }
+}
