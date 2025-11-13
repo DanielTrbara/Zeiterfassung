@@ -63,7 +63,7 @@ namespace WebApplication1.Areas.Zeiterfassung.Controllers
                 {
                     StartTime = model.InputStartTime,
                     EndTime = model.InputEndTime,
-                    Description = model.InputDescription ?? string.Empty,
+                    Description = model.InputDescription,
                     Category = category,
                     Hours = Math.Round(hours, 1),
                     TimeSpan = $"{model.InputStartTime:HH:mm} - {model.InputEndTime:HH:mm}"

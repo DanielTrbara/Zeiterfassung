@@ -1,42 +1,7 @@
 @model ZeiterfassungViewModel
 @{
-    ViewData["Title"] = "Zeiterfassung";
-    Layout = null; 
+    ViewData["Title"] = "STC - Zeiterfassung";
 }
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="~/css/dashboard.css" />
-    <title>STC - Dashboard</title>
-</head>
-<body>
-<div class="sidebar">
-    <div class="sidebar-header">
-        <h2>Small Tech<br><span class="offset">&amp; Company</span></h2>
-        <p class="time-manager-text">TimeManager</p>
-            
-        <div class="search">
-            <input type="text" placeholder="Search...">
-        </div>
-    </div>
-
-    <div class="sidebar-nav">
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Roles</a></li>
-            <li><a href="#">Vacation Time</a></li>
-            <li><a href="#">Settings</a></li>
-        </ul>
-    </div>
-    <div class="logout">
-        <a class="logout-link nav-link" asp-area="" asp-controller="Account" asp-action="Logout">
-            <i class="fas fa-sign-out-alt me-2"></i> Log out
-        </a>
-    </div>
-</div>
-
 
 <div class="main-content">
     <div class="topbar">
@@ -178,7 +143,6 @@
         </div>
     </div>
 </div>
-</body>
 
 @functions {
     private string GetCategoryClass(string category)

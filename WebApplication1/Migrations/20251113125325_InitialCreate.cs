@@ -31,6 +31,24 @@ namespace WebApplication1.Migrations
                     table.PrimaryKey("PK_LoginUsers", x => x.Id);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "TimeEntries",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    StartTime = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    EndTime = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: false),
+                    Category = table.Column<string>(type: "TEXT", nullable: false),
+                    Hours = table.Column<decimal>(type: "TEXT", nullable: false),
+                    TimeSpan = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TimeEntries", x => x.Id);
+                });
+
             migrationBuilder.InsertData(
                 table: "LoginUsers",
                 columns: new[] { "Id", "CreatedAt", "Email", "IsActive", "PasswordHash", "Role", "UserName" },
@@ -46,6 +64,9 @@ namespace WebApplication1.Migrations
         {
             migrationBuilder.DropTable(
                 name: "LoginUsers");
+
+            migrationBuilder.DropTable(
+                name: "TimeEntries");
         }
     }
 }
