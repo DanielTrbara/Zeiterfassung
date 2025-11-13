@@ -28,11 +28,12 @@ namespace WebApplication1.Areas.Login.Controllers
             var user = await _db.Set<LoginUser>()
                 .FirstOrDefaultAsync(u => u.UserName == vm.UserName && u.IsActive);
 
-            if (user == null || user.PasswordHash != vm.Password)
+            var ok = user != null && BCrypt.Net.BCrypt.Verify(vm.Password, user.PasswordHash);
+            if (!ok)
             {
                 ModelState.AddModelError("", "Benutzername oder Passwort ist falsch.");
                 return View(vm);
-            }
+            } 
 
             // Nur Testausgabe — kein Cookie, keine Session
             TempData["LoginMessage"] = $"Willkommen, {user.UserName} ({user.Role})!";

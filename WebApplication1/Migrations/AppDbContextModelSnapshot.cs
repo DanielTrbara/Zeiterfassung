@@ -79,6 +79,28 @@ namespace WebApplication1.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("LoginUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "admin@example.com",
+                            IsActive = true,
+                            PasswordHash = "$2a$11$zrTCmdAmPwGwA5YDE8JLe.NmjU7B7A9Ng9KWxkEimi8qdNlfJlnx2",
+                            Role = 1,
+                            UserName = "admin"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "",
+                            IsActive = true,
+                            PasswordHash = "$2a$11$v7swAPsNfVs53z2/kj7cvuB8fB1UV2u5DpQS71yphoim1NiX6GbES",
+                            Role = 2,
+                            UserName = "hr"
+                        });
                 });
 #pragma warning restore 612, 618
         }
