@@ -51,6 +51,38 @@ namespace WebApplication1.Migrations
                     b.ToTable("Krankschreibung");
                 });
 
+            modelBuilder.Entity("WebApplication1.Areas.Zeiterfassung.Models.TimeEntry", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("Hours")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TimeSpan")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TimeEntries");
+                });
+
             modelBuilder.Entity("WebApplication1.Models.LoginUser", b =>
                 {
                     b.Property<int>("Id")
