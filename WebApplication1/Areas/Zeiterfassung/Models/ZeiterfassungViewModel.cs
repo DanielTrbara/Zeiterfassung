@@ -31,8 +31,5 @@ public class ZeiterfassungViewModel
 
     // Liste der erfassten Zeiten für heute
     public List<TimeEntry> TodaysEntries { get; set; } = new List<TimeEntry>();
-
-
-    // Liste der Projekte
-    public List<ProjektErfassung> ActiveProjects { get; set; } = new List<ProjektErfassung>();
+    
 }

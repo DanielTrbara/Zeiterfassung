@@ -141,7 +141,6 @@ html, body {
 .sidebar-nav a:hover {
     color: #fff;
     background-color: rgba(255, 255, 255, 0.12);
-    transform: translateX(2px);
 }
 
 .sidebar-nav a.active {
@@ -153,7 +152,6 @@ html, body {
     position: absolute;
     left: 0;
     top: 50%;
-    transform: translateY(-50%);
     width: 3px;
     height: 20px;
     background-color: #fff;
@@ -192,13 +190,14 @@ html, body {
 /*Die Übersicht (Suche, Einstellungen und Co.)*/
 
 .main-content {
-    margin-left: 605px;
+    margin-left: 250px;
+    width: calc(100vw - 250px);
     background-color: var(--color-bg-main);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: unset;
+    align-items: unset;
 }
 
 
@@ -214,6 +213,7 @@ html, body {
     border-bottom: 1px solid rgba(0, 0, 0, 0.25);
     align-items: center;
     justify-content: flex-end;
+    background-color: var(--color-bg-main);
     padding: 0 40px;
     z-index: 10;
 }
@@ -281,12 +281,6 @@ html, body {
     line-height: 1;
 }
 
-/* --- Responsive Design --- */
-@media (max-width: 1024px) {
-    .search {
-        width: 300px;
-    }
-}
 
 @media (max-width: 768px) {
     .topbar {
@@ -310,7 +304,7 @@ html, body {
     background-color: var(--color-bg-main);
     color: var(--color-text-primary);
     min-height: calc(100vh - 71px);
-    overflow-y: auto;
+
 }
 
 .datetime {
@@ -328,6 +322,9 @@ html, body {
     display: flex;
     gap: 24px;
     margin-top: 40px;
+    flex-wrap: wrap;
+    align-items: center;
+    
 }
 
 .stat-card {
@@ -336,6 +333,7 @@ html, body {
     border-radius: 14px;
     padding: 12px 18px;
     display: flex;
+    flex: 1 1 200px;
     align-items: center;
     justify-content: space-between;
     color: #ffffff;
