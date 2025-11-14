@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using WebApplication1.Data;
 using WebApplication1.Models; 
 using BCrypt.Net;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 // --- Nur ausführen, wenn du explizit das Flag übergibst: `dotnet run -- --make-hash`
 if (args.Contains("--make-hash"))
@@ -36,7 +37,24 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
 // Services
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Login/Login/Login";          // Loginseite
+        options.AccessDeniedPath = "/Login/Login/Login";   // ggf. später eigene Seite
+    });
+
+builder.Services.AddAuthorization();
+
 var app = builder.Build();
+
+// --- DB + Tabellen einmalig erstellen ---
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    var created = db.Database.EnsureCreated();
+    Console.WriteLine($"[DB] EnsureCreated ausgeführt, neu erstellt: {created}");
+}
 
 if (!app.Environment.IsDevelopment())
 {
@@ -47,7 +65,10 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+
+app.UseAuthentication();
 app.UseAuthorization();
+
 
 app.MapControllerRoute(
         name: "areas",

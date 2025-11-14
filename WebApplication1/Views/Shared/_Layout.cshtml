@@ -21,12 +21,24 @@
         <ul>
             <li><a asp-area="Zeiterfassung" asp-controller="Zeiterfassung" asp-action="Zeiterfassung">Zeiterfassung</a></li>
             <li><a href="#">Roles</a></li>
-            <li><a href="#">Vacation Time</a></li>
+            @if (User.IsInRole("Admin") || User.IsInRole("Hr"))
+            {
+                <li>
+                    <a asp-area="VacationRequest"
+                       asp-controller="Urlaubsantrag"
+                       asp-action="Login">
+                        Vacation Request
+                    </a>
+                </li>
+            }            
             <li><a href="#">Settings</a></li>
         </ul>
     </div>
     <div class="logout">
-        <a class="logout-link nav-link" asp-area="" asp-controller="" asp-action="">
+        <a class="logout-link nav-link"
+           asp-area="Login"
+           asp-controller="Login"
+           asp-action="Logout">
             <i class="fas fa-sign-out-alt me-2"></i> Log out
         </a>
     </div>

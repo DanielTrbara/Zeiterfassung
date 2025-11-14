@@ -24,4 +24,8 @@
       <_ContentIncludedByDefault Remove="testbcrypt\obj\testbcrypt.csproj.nuget.dgspec.json" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="App_Data\" />
+    </ItemGroup>
+
 </Project>

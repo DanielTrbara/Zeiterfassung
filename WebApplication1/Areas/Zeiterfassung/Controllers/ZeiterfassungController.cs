@@ -2,10 +2,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Areas.Zeiterfassung.Models;
 using WebApplication1.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApplication1.Areas.Zeiterfassung.Controllers
 {
     [Area("Zeiterfassung")]
+    [Authorize] 
     public class ZeiterfassungController : Controller
     {
         private readonly AppDbContext _context;

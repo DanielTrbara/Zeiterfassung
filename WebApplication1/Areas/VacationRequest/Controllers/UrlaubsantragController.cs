@@ -1,8 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebApplication1.Areas.VacationRequest.Model;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace WebApplication1.Areas.VacationRequest.Controllers;
+[Area("VacationRequest")]
+[Authorize(Roles = "Admin,Hr")]
 
 public class UrlaubsantragController : Controller
 {
