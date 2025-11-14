@@ -23,13 +23,7 @@
             <li><a href="#">Roles</a></li>
             @if (User.IsInRole("Admin") || User.IsInRole("Hr"))
             {
-                <li>
-                    <a asp-area="VacationRequest"
-                       asp-controller="Urlaubsantrag"
-                       asp-action="Login">
-                        Vacation Request
-                    </a>
-                </li>
+                <li><a asp-area="VacationRequest" asp-controller="VacationRequest" asp-action="VacationRequest">VacationRequest</a></li>
             }            
             <li><a href="#">Settings</a></li>
         </ul>
