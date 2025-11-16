@@ -48,39 +48,37 @@
                 </p>
             </div>
             
-            <form method="post">
-                
+            <form asp-area="VacationRequest"
+                  asp-controller="VacationRequest"
+                  asp-action="Index"
+                  method="post">
+
                 <div class="row mb-4 align-items-end">
-                    
                     <div class="col-md-3">
-                        <label for="dateFrom" class="form-label text-muted small">Date (from)</label>
-                        <input type="date" 
-                               class="form-control" 
-                               id="dateFrom" 
-                               value="10-NOV-YYYY" 
-                               placeholder="DD-MM-YYYY" />
+                        <label asp-for="DateFrom" class="form-label text-muted small"></label>
+                        <input asp-for="DateFrom" class="form-control" type="date" />
+                        <span asp-validation-for="DateFrom" class="text-danger"></span>
                     </div>
-                    
+
                     <div class="col-md-3">
-                        <label for="dateTo" class="form-label text-muted small">Date (to)</label>
-                        <input type="date" 
-                               class="form-control" 
-                               id="dateTo" 
-                               value="15-NOV-YYYY" 
-                               placeholder="DD-MM-YYYY" />
+                        <label asp-for="DateTo" class="form-label text-muted small"></label>
+                        <input asp-for="DateTo" class="form-control" type="date" />
+                        <span asp-validation-for="DateTo" class="text-danger"></span>
                     </div>
                 </div>
 
                 <div class="mb-4">
-                    <label for="reason" class="form-label small">Reason*</label>
-                    <textarea class="form-control" id="reason" rows="10" required></textarea>
+                    <label asp-for="Reason" class="form-label small"></label>
+                    <textarea asp-for="Reason" class="form-control" rows="10"></textarea>
+                    <span asp-validation-for="Reason" class="text-danger"></span>
                 </div>
-                
+    
                 <button type="submit" class="btn btn-dark request-button">
                     Request vacation
                 </button>
-                
+
             </form>
+
         </div>
 
     </main>
