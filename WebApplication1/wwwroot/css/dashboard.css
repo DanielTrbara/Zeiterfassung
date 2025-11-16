@@ -6,7 +6,7 @@
     --color-bg-main: #eeeeee;
     --color-text-primary: #000000;
     --color-text-secondary: #121212;
-    --color-highlighting: rgba(156, 186, 197, 0.57);
+    --color-highlighting: rgba(191, 191, 191, 0.57);
 }
 
 * {
@@ -239,8 +239,8 @@ html, body {
 }
 
 .icon-notif{
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     border-radius: 8px;
     background-image: url('../Assets/Solid/Communication/Bullhorn.svg');
     background-repeat: no-repeat;
@@ -252,7 +252,7 @@ html, body {
 }
 
 .icon-notif:hover{
-    transform: translateY(-2px);
+    color: #ffffff !important;
     transition: all ease-in-out 0.3s;
     background-color: var(--color-highlighting);
 }
@@ -266,9 +266,9 @@ html, body {
 }
 
 .user-welcome {
-    font-size: 12px;
-    color: #6b7280;
-    font-weight: 400;
+    font-size: 15px;
+    color: #222222;
+    font-weight: 500;
     margin: 0;
     line-height: 1;
 }
