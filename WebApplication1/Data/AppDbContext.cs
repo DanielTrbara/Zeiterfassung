@@ -7,6 +7,8 @@ namespace WebApplication1.Data;
 public class AppDbContext : DbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+    
+    public DbSet<VacationRequest> VacationRequests => Set<VacationRequest>();
     public DbSet<LoginUser> LoginUsers => Set<LoginUser>();
     public DbSet<TimeEntry> TimeEntries => Set<TimeEntry>();
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -57,5 +59,6 @@ public class AppDbContext : DbContext
 
         modelBuilder.Entity<LoginUser>().HasData(admin,hr, supervisor, user);
     }
+
     
 }

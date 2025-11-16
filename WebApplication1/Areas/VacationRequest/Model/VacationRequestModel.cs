@@ -2,8 +2,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApplication1.Areas.VacationRequest.Model;
 using System.ComponentModel.DataAnnotations;
+using WebApplication1.Models;
 
 [Area("VacationRequest")]
+
 public class VacationRequestModel
 {
     [Required]
@@ -17,4 +19,11 @@ public class VacationRequestModel
     [Required]
     [MaxLength(1000)]
     public string Reason { get; set; }
+
+    public void ConvertTo(VacationRequest entity)
+    {
+        entity.DateFrom = DateFrom;
+        entity.DateTo = DateTo;
+        entity.Reason = Reason;
+    }
 }
