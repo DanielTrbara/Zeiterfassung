@@ -11,11 +11,7 @@ using WebApplication1.Data;
 namespace WebApplication1.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-<<<<<<<< HEAD:WebApplication1/Migrations/20251105182146_InitialCreate.Designer.cs
-    [Migration("20251105182146_InitialCreate")]
-========
-    [Migration("20251113151155_InitialCreate")]
->>>>>>>> main:WebApplication1/Migrations/20251113151155_InitialCreate.Designer.cs
+    [Migration("20251113152853_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -24,17 +20,44 @@ namespace WebApplication1.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.10");
 
-<<<<<<<< HEAD:WebApplication1/Migrations/20251105182146_InitialCreate.Designer.cs
-            modelBuilder.Entity("WebApplication1.Data.Models.Krankschreibung", b =>
-========
             modelBuilder.Entity("WebApplication1.Areas.Zeiterfassung.Models.TimeEntry", b =>
->>>>>>>> main:WebApplication1/Migrations/20251113151155_InitialCreate.Designer.cs
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-<<<<<<<< HEAD:WebApplication1/Migrations/20251105182146_InitialCreate.Designer.cs
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("Hours")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TimeSpan")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TimeEntries");
+                });
+
+            modelBuilder.Entity("WebApplication1.Data.Models.KrankschreibungModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
                     b.Property<DateTime>("Bis")
                         .HasColumnType("TEXT");
 
@@ -56,36 +79,11 @@ namespace WebApplication1.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Von")
-========
-                    b.Property<string>("Category")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("EndTime")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("Hours")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("StartTime")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("TimeSpan")
-                        .IsRequired()
->>>>>>>> main:WebApplication1/Migrations/20251113151155_InitialCreate.Designer.cs
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-<<<<<<<< HEAD:WebApplication1/Migrations/20251105182146_InitialCreate.Designer.cs
                     b.ToTable("Krankschreibung");
-========
-                    b.ToTable("TimeEntries");
->>>>>>>> main:WebApplication1/Migrations/20251113151155_InitialCreate.Designer.cs
                 });
 
             modelBuilder.Entity("WebApplication1.Models.LoginUser", b =>
