@@ -2,7 +2,7 @@ namespace WebApplication1.Areas.VacationRequest.Model;
 using System.ComponentModel.DataAnnotations;
 using WebApplication1.Models;
 
-public class UrlaubsantragViewModel
+public class VacationRequestModel
 {
     [Required]
     [DataType(DataType.Date)]

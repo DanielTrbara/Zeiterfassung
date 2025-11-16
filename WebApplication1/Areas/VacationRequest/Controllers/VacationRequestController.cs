@@ -15,7 +15,7 @@ namespace WebApplication1.Areas.VacationRequest.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var model = new UrlaubsantragViewModel()
+            var model = new VacationRequestModel()
             {
                 DateFrom = DateTime.Today,
                 DateTo = DateTime.Today.AddDays(1)
@@ -26,7 +26,7 @@ namespace WebApplication1.Areas.VacationRequest.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index(UrlaubsantragViewModel model)
+        public async Task<IActionResult> Index(VacationRequestModel model)
         {
             if (!ModelState.IsValid)
             {
