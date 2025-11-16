@@ -1,16 +1,20 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebApplication1.Areas.VacationRequest.Model;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace WebApplication1.Areas.VacationRequest.Controllers;
+[Area("VacationRequest")]
+[Authorize(Roles = "Admin,Hr")]
 
-public class UrlaubsantragController : Controller
+public class VacationRequestController : Controller
 {
-    private readonly ILogger<UrlaubsantragController> _logger;
+    private readonly ILogger<VacationRequestController> _logger;
         // private readonly IVacationService _vacationService; // Beispiel für einen Dienst
 
         // Konstruktor (für Dependency Injection)
-        public UrlaubsantragController(ILogger<UrlaubsantragController> logger /*, IVacationService vacationService */)
+        public VacationRequestController(ILogger<VacationRequestController> logger /*, IVacationService vacationService */)
         {
             _logger = logger;
             // _vacationService = vacationService;
@@ -22,9 +26,18 @@ public class UrlaubsantragController : Controller
         
         // Diese Methode reagiert auf GET-Anfragen an /Vacation/Request
         [HttpGet]
-        public IActionResult Login()
+        public IActionResult VacationRequest()
         {
-            return View(new UrlaubsantragViewModel());
+            return View(new VacationRequestModel());
+        }
+        
+        [HttpPost]
+        public IActionResult Submit(VacationRequestModel model)
+        {
+            if (!ModelState.IsValid)
+                return View("Index", model);
+
+            return RedirectToAction("Index");
         }
 
         // ===============================================
@@ -35,7 +48,7 @@ public class UrlaubsantragController : Controller
         // [HttpPost] ist wichtig, um es von der GET-Methode zu unterscheiden
         [HttpPost]
         [ValidateAntiForgeryToken] // Standard-Sicherheits-Token
-        public IActionResult Request(UrlaubsantragViewModel model)
+        public IActionResult Request(VacationRequestModel model)
         {
             // Überprüft, ob das ViewModel die Validierungsregeln erfüllt (z.B. [Required]-Felder)
             if (ModelState.IsValid)

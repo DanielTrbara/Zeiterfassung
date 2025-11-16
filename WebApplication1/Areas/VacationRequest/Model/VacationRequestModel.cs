@@ -1,7 +1,10 @@
+using Microsoft.AspNetCore.Mvc;
+
 namespace WebApplication1.Areas.VacationRequest.Model;
 using System.ComponentModel.DataAnnotations;
 
-public class UrlaubsantragViewModel
+[Area("VacationRequest")]
+public class VacationRequestModel
 {
     [Required]
     [DataType(DataType.Date)]
