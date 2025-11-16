@@ -1,17 +1,17 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Data;
 using WebApplication1.Areas.VacationRequest.Model;
+using Microsoft.AspNetCore.Authorization;
 using WebApplication1.Models;
-
-
 
 namespace WebApplication1.Areas.VacationRequest.Controllers
 {
     [Area("VacationRequest")]
+    [Authorize(Roles = "Admin, Hr")]
     public class VacationRequestController(ILogger<VacationRequestController> logger, AppDbContext context)
         : Controller
     {
-        
         [HttpGet]
         public IActionResult Index()
         {
@@ -26,11 +26,11 @@ namespace WebApplication1.Areas.VacationRequest.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index(VacationRequestModel model)
+        public async Task<IActionResult> VacationRequest(VacationRequestModel model)
         {
             if (!ModelState.IsValid)
             {
-                TempData["PROBLEM"] = "Promleme ganz viele";
+                TempData["PROBLEM"] = "Probleme ganz viele";
                 return View(model);
             }
 

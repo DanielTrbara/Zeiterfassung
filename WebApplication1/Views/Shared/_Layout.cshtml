@@ -11,7 +11,7 @@
     <div class="sidebar-header">
         <h2>Small Tech<br><span class="offset">&amp; Company</span></h2>
         <p class="time-manager-text">TimeManager</p>
-            
+
         <div class="search">
             <input type="text" placeholder="Search...">
         </div>
@@ -23,8 +23,8 @@
             <li><a href="#">Roles</a></li>
             @if (User.IsInRole("Admin") || User.IsInRole("Hr"))
             {
-                <li><a asp-area="VacationRequest" asp-controller="VacationRequest" asp-action="VacationRequest">VacationRequest</a></li>
-            }            
+                <li><a asp-area="VacationRequest" asp-controller="VacationRequest" asp-action="Index">VacationRequest</a></li>
+            }
             <li><a href="#">Settings</a></li>
         </ul>
     </div>
@@ -35,6 +35,20 @@
            asp-action="Logout">
             <i class="fas fa-sign-out-alt me-2"></i> Log out
         </a>
+    </div>
+</div>
+<div class="topbar">
+    <div class="topbar-right">
+        <button class="notification-btn" title="Notifications">
+            <div class="icon-btn">
+                <div class="icon-notif"></div>
+            </div>
+        </button>
+        <div class="user-info">     
+            <div class="user-details">
+                <h1 class="user-welcome">Signed in as <u>@User.Identity?.Name</u></h1>
+            </div>
+        </div>
     </div>
 </div>
 
