@@ -16,14 +16,14 @@
             <input type="text" placeholder="Search...">
         </div>
     </div>
-
+        
     <div class="sidebar-nav">
         <ul>
             <li><a asp-area="Zeiterfassung" asp-controller="Zeiterfassung" asp-action="Zeiterfassung">Zeiterfassung</a></li>
             <li><a href="#">Roles</a></li>
             @if (User.IsInRole("Admin") || User.IsInRole("Hr"))
             {
-                <li><a asp-area="VacationRequest" asp-controller="VacationRequest" asp-action="Index">VacationRequest</a></li>
+                <li><a asp-area="VacationRequest" asp-controller="VacationRequest" asp-action="Index">Vacation Request</a></li>
             }
             <li><a href="#">Settings</a></li>
         </ul>
