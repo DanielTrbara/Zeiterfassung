@@ -11,7 +11,7 @@ using WebApplication1.Data;
 namespace WebApplication1.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251113151155_InitialCreate")]
+    [Migration("20251116174546_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -103,6 +103,26 @@ namespace WebApplication1.Migrations
                             PasswordHash = "$2a$11$v7swAPsNfVs53z2/kj7cvuB8fB1UV2u5DpQS71yphoim1NiX6GbES",
                             Role = 2,
                             UserName = "hr"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "",
+                            IsActive = true,
+                            PasswordHash = "$2a$11$5MOf0rHb.dF5GH9Pxx3Wmu291U66Zup/2HgJ3BsKl90ZaLiNVqZmm",
+                            Role = 3,
+                            UserName = "supervisor"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "",
+                            IsActive = true,
+                            PasswordHash = "$2a$11$rC/.iA9wdl4XLw9BhERh9OyCfmgzL.wymq8nxFNCVnL2beKFe8B8y",
+                            Role = 4,
+                            UserName = "max"
                         });
                 });
 #pragma warning restore 612, 618
