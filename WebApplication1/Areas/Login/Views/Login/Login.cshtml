@@ -1,5 +1,6 @@
 @model ViewModelLogin
 @{
+    Layout = null;
     ViewData["Title"] = "Login";
     var returnUrl = Context.Request.Query["returnUrl"].ToString();
 }
@@ -12,7 +13,9 @@
         <div class="description-title">
             <p class="plus">+</p>
             <h2>Automation.<br/>Precision.<br/>Progress.</h2>
-            <p class="description-desc">From concept to production — we build the machines that move industries forward.</p>
+            <p class="description-desc">
+                From concept to production — we build the machines that move industries forward.
+            </p>
         </div>
     </div>
 
@@ -21,7 +24,8 @@
             <h2>Welcome back!</h2>
             <p class="subtitle">Sign in to continue.</p>
 
-            <form asp-action="Login" asp-route-returnUrl="@returnUrl" method="post">
+            <!-- WICHTIG: Formular muss zum LoginController POSTEN -->
+            <form asp-area="Login" asp-controller="Login" asp-action="Login" method="post">
                 @Html.AntiForgeryToken()
 
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -38,6 +42,4 @@
     </div>
 </div>
 
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
+<partial name="_ValidationScriptsPartial" />2

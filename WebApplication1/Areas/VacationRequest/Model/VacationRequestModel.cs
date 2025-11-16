@@ -1,6 +1,10 @@
+using Microsoft.AspNetCore.Mvc;
+
 namespace WebApplication1.Areas.VacationRequest.Model;
 using System.ComponentModel.DataAnnotations;
 using WebApplication1.Models;
+
+[Area("VacationRequest")]
 
 public class VacationRequestModel
 {

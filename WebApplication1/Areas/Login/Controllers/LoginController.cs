@@ -2,6 +2,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Data;
 using WebApplication1.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApplication1.Areas.Login.Controllers
 {
@@ -13,6 +17,7 @@ namespace WebApplication1.Areas.Login.Controllers
         public LoginController(AppDbContext db) => _db = db;
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Login()
         {
             return View(new ViewModelLogin());
@@ -20,6 +25,7 @@ namespace WebApplication1.Areas.Login.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(ViewModelLogin vm)
         {
             if (!ModelState.IsValid)
@@ -33,11 +39,39 @@ namespace WebApplication1.Areas.Login.Controllers
             {
                 ModelState.AddModelError("", "Benutzername oder Passwort ist falsch.");
                 return View(vm);
-            } 
+            }
 
-            // Nur Testausgabe — kein Cookie, keine Session
-            TempData["LoginMessage"] = $"Willkommen, {user.UserName} ({user.Role})!";
-            return RedirectToAction("Index", "Home", new { area = "" });
+            // >>> HIER NEU: altes Cookie löschen, bevor wir neu einloggen
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            // === Claims + Cookie setzen ===
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, user.UserName),
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Role, user.Role.ToString())   // "Admin", "Hr", ...
+            };
+
+            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var principal = new ClaimsPrincipal(identity);
+
+            await HttpContext.SignInAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme,
+                principal,
+                new AuthenticationProperties
+                {
+                    IsPersistent = true,
+                    ExpiresUtc = DateTimeOffset.UtcNow.AddHours(8)
+                });
+
+            return RedirectToAction("Zeiterfassung", "Zeiterfassung", new { area = "Zeiterfassung" });
+        }
+        
+        [Authorize] // darf nur aufgerufen werden, wenn jemand eingeloggt ist
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login", "Login", new { area = "Login" });
         }
     }
 }
