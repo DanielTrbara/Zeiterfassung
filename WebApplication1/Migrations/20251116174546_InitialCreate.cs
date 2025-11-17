@@ -14,25 +14,6 @@ namespace WebApplication1.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Krankschreibung",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    MitarbeiterName = table.Column<string>(type: "TEXT", nullable: false),
-                    MitarbeiterEmail = table.Column<string>(type: "TEXT", nullable: false),
-                    Von = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Bis = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    MitAttest = table.Column<bool>(type: "INTEGER", nullable: false),
-                    Kommentar = table.Column<string>(type: "TEXT", nullable: true),
-                    ErfasstAm = table.Column<DateTime>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Krankschreibung", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "LoginUsers",
                 columns: table => new
                 {
@@ -74,16 +55,15 @@ namespace WebApplication1.Migrations
                 values: new object[,]
                 {
                     { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "admin@example.com", true, "$2a$11$zrTCmdAmPwGwA5YDE8JLe.NmjU7B7A9Ng9KWxkEimi8qdNlfJlnx2", 1, "admin" },
-                    { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", true, "$2a$11$v7swAPsNfVs53z2/kj7cvuB8fB1UV2u5DpQS71yphoim1NiX6GbES", 2, "hr" }
+                    { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", true, "$2a$11$v7swAPsNfVs53z2/kj7cvuB8fB1UV2u5DpQS71yphoim1NiX6GbES", 2, "hr" },
+                    { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", true, "$2a$11$5MOf0rHb.dF5GH9Pxx3Wmu291U66Zup/2HgJ3BsKl90ZaLiNVqZmm", 3, "supervisor" },
+                    { 4, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", true, "$2a$11$rC/.iA9wdl4XLw9BhERh9OyCfmgzL.wymq8nxFNCVnL2beKFe8B8y", 4, "max" }
                 });
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Krankschreibung");
-
             migrationBuilder.DropTable(
                 name: "LoginUsers");
 
