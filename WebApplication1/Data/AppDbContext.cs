@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using WebApplication1.Data.Models;
 using WebApplication1.Models;
 using WebApplication1.Areas.Zeiterfassung.Models;
 
@@ -10,6 +11,7 @@ public class AppDbContext : DbContext
     
     public DbSet<VacationRequest> VacationRequests => Set<VacationRequest>();
     public DbSet<LoginUser> LoginUsers => Set<LoginUser>();
+    public DbSet<KrankschreibungModel> Krankschreibung => Set<KrankschreibungModel>();
     public DbSet<TimeEntry> TimeEntries => Set<TimeEntry>();
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
