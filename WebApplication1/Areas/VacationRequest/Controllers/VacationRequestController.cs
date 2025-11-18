@@ -8,7 +8,6 @@ using WebApplication1.Models;
 namespace WebApplication1.Areas.VacationRequest.Controllers
 {
     [Area("VacationRequest")]
-    [Authorize(Roles = "Admin, Hr")]
     public class VacationRequestController(ILogger<VacationRequestController> logger, AppDbContext context)
         : Controller
     {
